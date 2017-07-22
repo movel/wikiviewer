@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <title>Wiki View</title>
   <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+  <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
   <div class="container">
@@ -15,6 +16,14 @@
         <a href="https://en.wikipedia.org/wiki/Special:Random" class="btn btn-primary" target="_blank">
           Wiki Random Article
         </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <form id="myform" action="submit-form.php">
+          Search: <input type='text' name='query'>
+          <a href="javascript: submitform()">Submit</a>
+        </form>
       </div>
     </div>
   </div>
