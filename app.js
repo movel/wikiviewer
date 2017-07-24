@@ -7,33 +7,36 @@ window.onload = function() {
 
   function myFunction() {
     
-    let cors = 'https://cors-anywhere.herokuapp.com/';
-    // let api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
-    let api = 'https://en.wikipedia.org/w/api.php?';
-    let cb = '&callback=JSON_CALLBACK';
-    let page = 'https://en.wikipedia.org/?curid=';
+    // let cors = 'https://cors-anywhere.herokuapp.com/';
+    var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+    //let api = 'https://en.wikipedia.org/w/api.php?';
+    var cb = '&callback=JSON_CALLBACK';
+    var page = 'https://en.wikipedia.org/?curid=';
+    
+    //console.log(api+'Re'+cb);
     
     /* global fetch */
-    // fetch(cors + api + cb)
-    // .then(function(response) {
-    //   return response.json();
-    // }).then(function(json) {
-    //   console.log('parsed json', json);
-    // }).catch(function(ex) {
-    //   console.log('parsing failed', ex);
-    // });
-    
-    fetch(api + cb)
+    fetch(api + 'Re', { mode: 'no-cors' })
     .then(function(response) {
-      alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
-      alert(response.status); // 200
-  
+      // console.log(response);
       return response.json();
-     })
-    .then(function(user) {
-      alert(user.name); // iliakan
-    })
-    .catch( alert );
+    }).then(function(json) {
+      console.log('parsed json', json);
+    }).catch(function(ex) {
+      console.log('parsing failed', ex);
+    });
+    
+    // fetch(api + cb, {mode: 'no-cors'})
+    // .then(function(response) {
+    //   alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
+    //   alert(response.status); // 200
+  
+    //   return response.json();
+    // })
+    // .then(function(user) {
+    //   alert(user.name); // iliakan
+    // })
+    // .catch( alert );
     
   }
 
