@@ -34,8 +34,8 @@
         rdyString += queryString[i];
       }
     }
-    textSearchCheck(rdyString, queryString);
-    styleContainer();
+    // textSearchCheck(rdyString, queryString);
+    // styleContainer();
               
     let api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrsearch='
                 + textSearch
@@ -43,26 +43,35 @@
     
     let xhr = new XMLHttpRequest();
     
-    xhr.open('GET', api, true);
-    xhr.send();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        let data = xhr.responseText;
-        let json = JSON.parse(data);
-        let keys = Object.keys(json.query.pages);
-        for (let i = 0; i < keys.length; i++) {
-          let data = xhr.responseText;
-          let json = JSON.parse(data);
-          let keys = Object.keys(json.query.pages);
-          for (let i = 0; i < keys.length; i++) {
-            titleDivs[i].childNodes[1].innerHTML = (json.query.pages[keys[i]].title.search("(disambiguation)") ? json.query.pages[keys[i]].title.replace("(disambiguation)", ""):json.query.pages[keys[i]].title) + "<br>" + json.query.pages[keys[i]].extract;
-            titleDivs[i].childNodes[1].href = "https://en.wikipedia.org/wiki/" + json.query.pages[keys[i]].title;
-            titleDivs[i].childNodes[1].setAttribute("class", "links");
-            checkBlankDescrip(i, json.query.pages[keys[i]].extract, json.query.pages[keys[i]].title);
-          }
-        }
-      }
-    };
+    // xhr.open('GET', api, true);
+    // xhr.send();
+    // xhr.onreadystatechange = function() {
+    //   if (xhr.readyState === 4 && xhr.status === 200) {
+    //     let data = xhr.responseText;
+    //     let json = JSON.parse(data);
+    //     let keys = Object.keys(json.query.pages);
+    //     for (let i = 0; i < keys.length; i++) {
+    //       let data = xhr.responseText;
+    //       let json = JSON.parse(data);
+    //       let keys = Object.keys(json.query.pages);
+    //       for (let i = 0; i < keys.length; i++) {
+    //         // titleDivs[i].childNodes[1].innerHTML = (json.query.pages[keys[i]].title.search("(disambiguation)") ? json.query.pages[keys[i]].title.replace("(disambiguation)", ""):json.query.pages[keys[i]].title) + "<br>" + json.query.pages[keys[i]].extract;
+    //         // titleDivs[i].childNodes[1].href = "https://en.wikipedia.org/wiki/" + json.query.pages[keys[i]].title;
+    //         // titleDivs[i].childNodes[1].setAttribute("class", "links");
+    //         // checkBlankDescrip(i, json.query.pages[keys[i]].extract, json.query.pages[keys[i]].title);
+            
+    //         // let div = document.createElement('div');
+    //         // div.className = "wiki_extract";
+    //         // div.innerHTML = (json.query.pages[keys[i]].title.search("(disambiguation)") ? json.query.pages[keys[i]].title.replace("(disambiguation)", ""):json.query.pages[keys[i]].title) + "<br>" + json.query.pages[keys[i]].extract;
+    //         // div.href = "https://en.wikipedia.org/wiki/" + json.query.pages[keys[i]].title;
+    //         // div.setAttribute("class", "links");
+    //         console.log(json());
+    //       }
+    //     }
+    //   }
+    // };
+    
+    
     
     
   }
